@@ -1,6 +1,7 @@
 /*
  * Copyright 2009-2010 Cybozu Labs, Inc.
  * Copyright 2011-2014 Kazuho Oku
+ * Copyright 2014 Marc Helbling
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
