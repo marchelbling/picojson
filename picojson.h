@@ -325,29 +325,25 @@ namespace picojson {
   }
   
   inline const value& value::get(size_t idx) const {
-    static value s_null;
     PICOJSON_ASSERT(is<array>());
-    return idx < u_.array_->size() ? (*u_.array_)[idx] : s_null;
+    return (*u_.array_)[idx];
   }
 
   inline value& value::get(size_t idx) {
-    static value s_null;
     PICOJSON_ASSERT(is<array>());
-    return idx < u_.array_->size() ? (*u_.array_)[idx] : s_null;
+    return (*u_.array_)[idx];
   }
 
   inline const value& value::get(const std::string& key) const {
-    static value s_null;
     PICOJSON_ASSERT(is<object>());
     object::const_iterator i = u_.object_->find(key);
-    return i != u_.object_->end() ? i->second : s_null;
+    return i->second;
   }
 
   inline value& value::get(const std::string& key) {
-    static value s_null;
     PICOJSON_ASSERT(is<object>());
     object::iterator i = u_.object_->find(key);
-    return i != u_.object_->end() ? i->second : s_null;
+    return i->second;
   }
 
   inline bool value::contains(size_t idx) const {
