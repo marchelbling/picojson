@@ -935,18 +935,6 @@ namespace picojson {
     return err;
   }
   
-  template <typename T> struct last_error_t {
-    static std::string s;
-  };
-  template <typename T> std::string last_error_t<T>::s;
-  
-  inline void set_last_error(const std::string& s) {
-    last_error_t<bool>::s = s;
-  }
-  
-  inline const std::string& get_last_error() {
-    return last_error_t<bool>::s;
-  }
 
   inline bool operator==(const value& x, const value& y) {
     if (x.is<null>())
@@ -981,10 +969,8 @@ namespace std {
 
 inline std::istream& operator>>(std::istream& is, picojson::value& x)
 {
-  picojson::set_last_error(std::string());
   std::string err = picojson::parse(x, is);
   if (! err.empty()) {
-    picojson::set_last_error(err);
     is.setstate(std::ios::failbit);
   }
   return is;
